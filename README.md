@@ -1,11 +1,11 @@
 # homebrew-tap
 
-A Homebrew tap for distributing command-line tools.
+A Homebrew tap for distributing casks.
 
 ## Install
 
 ```bash
-brew install zhaochunqi/tap/git-open
+brew install --cask zhaochunqi/tap/git-open
 ```
 
 ## Uninstall
@@ -13,8 +13,8 @@ brew install zhaochunqi/tap/git-open
 To completely remove this tap from your local system:
 
 ```bash
-# 1. Uninstall the formula
-brew uninstall git-open
+# 1. Uninstall the cask
+brew uninstall --cask git-open
 
 # 2. Remove the tap
 brew untap zhaochunqi/tap
