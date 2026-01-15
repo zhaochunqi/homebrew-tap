@@ -3,7 +3,7 @@ cask "git-open" do
   name "git-open"
   desc "Open the web URL of the Git repository"
   homepage "https://github.com/zhaochunqi/git-open"
-  version "2.2.6"
+  version "2.2.7"
 
   livecheck do
     skip "Auto-generated on release."
@@ -14,27 +14,34 @@ cask "git-open" do
   on_macos do
     on_intel do
       url "https://github.com/zhaochunqi/git-open/releases/download/v#{version}/git-open_Darwin_x86_64.tar.gz"
-      sha256 "61c13553099b0e36e5d02759c266a24a356e56bf3a02265fb54f67e2863ae432"
+      sha256 "f8b15b51610cc5c7c3b2246303fd1fb9ecd8842d368b7cd1a2159e20b617973d"
     end
     on_arm do
       url "https://github.com/zhaochunqi/git-open/releases/download/v#{version}/git-open_Darwin_arm64.tar.gz"
-      sha256 "1a1dd127742a99624e980f4d66e790db085ba63f79b9763ee6673f6133b3c752"
+      sha256 "795e5a1b6e41e79122e12ed5709b71ce2aabf4cb2e6a6d846192705e07192c12"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/zhaochunqi/git-open/releases/download/v#{version}/git-open_Linux_x86_64.tar.gz"
-      sha256 "ef53c20574161d5782a32f216bcf1dc62c6a120281cad80e58f040354b0feda4"
+      sha256 "ec24c9ee2a35804e314aaede390614b675a81feee23350fde675f0e3fe57672b"
     end
     on_arm do
       url "https://github.com/zhaochunqi/git-open/releases/download/v#{version}/git-open_Linux_arm64.tar.gz"
-      sha256 "d34c574b6e7d932038d55900238d0d6783ab95db8e7f0c70390fd9609c20c804"
+      sha256 "598b8c2efa7a6dbf678c76d1267d446f60e8a04a1abbd3d9a90d91441a91ec33"
+    end
+  end
+
+  postflight do
+    if OS.mac?
+      system_command "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "#{staged_path}/git-open"]
     end
   end
 
   caveats do
-    "Use 'git-open' command to get the web URL of your git repository."
+    "Use 'git-open' command to open the web URL of your git repository."
   end
 
   # No zap stanza required
